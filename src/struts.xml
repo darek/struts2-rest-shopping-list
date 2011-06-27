@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.objectFactory" value="guice" />
+
+	<constant name="struts.action.extension" value="html"/>
+    <constant name="struts.convention.package.locators" value="actions"/>
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    
+    <!-- <constant name="guice.module" value="com.darekzon.shoppinglist.modules.ShoppingListModule" />  -->
+</struts>
+
+<!-- 	
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+    <constant name="struts.convention.package.locators" value="actions"/>
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+
+	<constant name="struts.objectFactory" value="guice" />
+	 
+	<constant name="struts.action.extension" value="html"/>
+	
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	
+	<constant name="struts.mapper.class" value="rest" />
+	
+	<constant name="struts.convention.action.suffix" value="Controller"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	<constant name="struts.convention.default.parent.package" value="rest-default"/>
+
+	<constant name="struts.convention.action.packages" value="com.darekzon.shoppinglist.actions"/>
+	
+	<constant name="struts.convention.default.class.ref" value="com.darekzon.shoppinglist.actions.ErrorController" />
+	
+	
+	
+	<package name="/" extends="struts-default">
+		<action name="index" class="com.darekzon.shoppinglist.actions.IndexAction">
+			<result name="success">/jsp/index.jsp</result>
+		</action>
+		<action name="delete/%{id}" method="deleteProduct" class="com.darekzon.shoppinglist.actions.IndexAction"></action>
+		<action name="add" method="add" class="com.darekzon.shoppinglist.actions.IndexAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">index</param>
+			</result>
+		</action>
+	</package>
+</struts>
+-->
+	
