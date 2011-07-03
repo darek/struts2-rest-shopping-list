@@ -18,10 +18,11 @@ package com.darekzon.shoppinglist.listener;
 
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 
+import com.darekzon.shoppinglist.modules.ShoppingListModule;
 import com.darekzon.shoppinglist.mongoose.EntityManager;
 import com.darekzon.shoppinglist.mongoose.EntityManagerImpl;
-import com.darekzon.shoppinglist.repository.ProductRepository;
-import com.darekzon.shoppinglist.repository.ProductRepositoryImpl;
+import com.darekzon.shoppinglist.repository.ProductListRepository;
+import com.darekzon.shoppinglist.repository.ProductListRepositoryImpl;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
@@ -46,10 +47,8 @@ public class GuiceStruts2PluginListener extends GuiceServletContextListener {
           // Struts 2 setup
           bind(StrutsPrepareAndExecuteFilter.class).in(Singleton.class);
           filter("/*").through(StrutsPrepareAndExecuteFilter.class);
-          
-          //bind(ServletContextEvent.class).in(Singleton.class);
-          bind(EntityManager.class).to(EntityManagerImpl.class).asEagerSingleton();
-  	      bind(ProductRepository.class).to(ProductRepositoryImpl.class);
+         
+          install(new ShoppingListModule());
       }
     });
   }
