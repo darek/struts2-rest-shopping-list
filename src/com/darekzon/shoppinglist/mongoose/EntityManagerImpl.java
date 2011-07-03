@@ -3,7 +3,6 @@ package com.darekzon.shoppinglist.mongoose;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Properties;
-
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.google.code.morphia.query.Query;
@@ -11,52 +10,61 @@ import com.mongodb.DB;
 import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 
+/**
+ * EntityManagerImpl - class that implement MongoDB EntityManager
+ * EntityManager read config from database.properties file
+ * 
+ * @author darek
+ */
 public class EntityManagerImpl implements EntityManager {
 	
-	private String host = null;;
-	private int port = 27017;
-	private String user = null;
-	private String password = null;
-	private String datastore = null;
+	/**
+	 * Database properties from database.properties file
+	 */
+	private Properties properties = new Properties();
 	
+	/**
+	 * Mongo database connection
+	 */
 	private Mongo mongo;
 	
+	/**
+	 * Morfia object for Mongo database operation 
+	 * @see mongo
+	 */
 	private Morphia morphia = new Morphia();
 	
+	/**
+	 * 
+	 * @throws UnknownHostException
+	 * @throws MongoException
+	 */
 	public EntityManagerImpl() throws UnknownHostException, MongoException{
-		
 		this.readProperties();
-		
-		
-		System.out.println("Starting EntityManager");
+		this.mongo = new Mongo(properties.getProperty("db.host"),Integer.valueOf(properties.getProperty("db.port")));
 	}
 	
-	private void readProperties() {
-		Properties databaseProps = new Properties();
+	/**
+	 * Reads database settings from database.properties file
+	 * If settings doesn not exists system is unable to connect to database, 
+	 * so application won't work that's why RuntimeException is thrown
+	 */
+	private void readProperties() throws RuntimeException{
 		try {
-			databaseProps.load(this.getClass().getResourceAsStream("/database.properties"));
+			properties.load(this.getClass().getResourceAsStream("/database.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Database fatal error");
+			throw new RuntimeException("Database fatal error. Please provide database configuration in database.properties file");
 		}
-		this.host = databaseProps.getProperty("host");
-		this.port = Integer.valueOf(databaseProps.getProperty("port"));
-		this.user = databaseProps.getProperty("user");
-		this.password = databaseProps.getProperty("password");
-		this.datastore = databaseProps.getProperty("datastore");
 		
 	}
-
-	public EntityManagerImpl(final String host, final int port) throws UnknownHostException, MongoException{
-		this.mongo = new Mongo(host, port);
-	}
-
+	
 	public <T> Datastore getDatastore(String datastore) {
 		return this.morphia.createDatastore(this.mongo, datastore);
 	}
 	
 	public <T> Query<T> find(Class<T> cl){
-		return this.getDatastore(this.datastore).find(cl);
+		return this.getDatastore(this.properties.getProperty("db.datastore")).find(cl);
 	}
 	
 	public DB getDatabase(String database){
@@ -65,8 +73,7 @@ public class EntityManagerImpl implements EntityManager {
 
 	@Override
 	public void create(Object cl) {
-		//System.out.println(cl);
-		this.getDatastore(this.datastore).save(cl);
+		this.getDatastore(this.properties.getProperty("db.datastore")).save(cl);
 		
 	}
 
