@@ -1,8 +1,11 @@
 package com.darekzon.shoppinglist.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.Index;
+import com.google.code.morphia.annotations.Indexed;
 
 public class ProductsList {
 
@@ -27,6 +30,7 @@ public class ProductsList {
 		this.code = code;
 	}
 	
+	@Indexed
 	String email;
 
 	public String getEmail() {
@@ -37,6 +41,17 @@ public class ProductsList {
 		this.email = email;
 	}
 	
+	@Indexed
+	Date date = new Date();
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	List<Product> productsList;
 
 	public List<Product> getProductsList() {
