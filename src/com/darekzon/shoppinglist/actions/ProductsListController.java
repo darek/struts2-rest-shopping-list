@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
+@SuppressWarnings("serial")
 public class ProductsListController extends ActionSupport implements ModelDriven<ProductsList> {
 
 	private ProductsList productsList = new ProductsList();
