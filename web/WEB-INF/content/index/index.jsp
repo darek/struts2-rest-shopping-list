@@ -1,6 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"  %>
 
-
 <s:form method="get" action="products-list">
 	<s:label for="email">Email
 	<s:textfield id="email" name="email" /></s:label>
