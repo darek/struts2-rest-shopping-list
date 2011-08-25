@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 @SuppressWarnings("serial")
-public class IndexController extends ActionSupport{
+public class IndexController extends ActionSupport {
 
 	@Inject
 	private ProductListRepository productList;
@@ -28,17 +28,13 @@ public class IndexController extends ActionSupport{
 
 	@SkipValidation
 	public String index(){
-		System.out.println("alamakotaaaaaaaa");
-		
-		return "success";
+		return "index";
 	}
 
 	
 	public String create(){
-		
 		productList.create(email);
-		
-		return "error";
+		return "index";
 	}
 	
 	
