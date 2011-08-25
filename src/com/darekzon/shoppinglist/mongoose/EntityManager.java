@@ -10,4 +10,10 @@ public interface EntityManager {
 	
 	public void create(Object cl);
 	
+	public void merge(Object entity);
+	
+	public <T> T get(Class<T> cl,String id);
+	
+	
+	
 }

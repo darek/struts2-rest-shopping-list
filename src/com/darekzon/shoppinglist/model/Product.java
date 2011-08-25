@@ -1,24 +1,15 @@
 package com.darekzon.shoppinglist.model;
-import com.google.code.morphia.annotations.*;
+import com.google.code.morphia.annotations.Entity;
+import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 @Entity(value="products")
 public class Product {
 	
 	public Product(){}
 	
-	public Product(String productName) {
+	public Product(String productName,int amount) {
 		this.setName(productName);
-	}
-	
-	@Id
-	private String id;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String objectId) {
-		id = objectId;
+		this.setAmount(amount);
 	}
 
 	private String name;
@@ -37,6 +28,7 @@ public class Product {
 		return amount;
 	}
 	
+	//@TypeConversion(converter = "com.darekzon.shoppinglist.mongoose.StringToIntConverter")
 	public void setAmount(int amnt){
 		this.amount = amnt;
 	}

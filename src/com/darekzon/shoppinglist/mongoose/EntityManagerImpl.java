@@ -3,6 +3,9 @@ package com.darekzon.shoppinglist.mongoose;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Properties;
+
+import org.bson.types.ObjectId;
+
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.google.code.morphia.query.Query;
@@ -37,9 +40,10 @@ public class EntityManagerImpl implements EntityManager {
 	/**
 	 * 
 	 * @throws UnknownHostException
-	 * @throws MongoException
+	 * @throws MongoExcept
 	 */
 	public EntityManagerImpl() throws UnknownHostException, MongoException{
+		System.out.println("Starting Morphia wrapper...");
 		this.readProperties();
 		this.mongo = new Mongo(properties.getProperty("db.host"),Integer.valueOf(properties.getProperty("db.port")));
 	}
@@ -65,6 +69,18 @@ public class EntityManagerImpl implements EntityManager {
 	
 	public <T> Query<T> find(Class<T> cl){
 		return this.getDatastore(this.properties.getProperty("db.datastore")).find(cl);
+	}
+	
+	
+	@Override
+	public void merge(Object entity) {
+		System.out.println("merging entity "+entity);
+		this.getDatastore(this.properties.getProperty("db.datastore")).merge(entity);
+	}
+
+	public <T> T get(Class<T> cl,String id){
+	
+		return this.getDatastore(this.properties.getProperty("db.datastore")).get(cl,new ObjectId(id));
 	}
 	
 	public DB getDatabase(String database){
