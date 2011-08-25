@@ -46,8 +46,10 @@ public class ProductListRepositoryImpl implements ProductListRepository{
 	}
 
 	@Override
-	public void addProduct(ProductsList pr, Product p) {
-		// TODO Auto-generated method stub
+	public void merge(ProductsList pr) {
+		System.out.println("merging");
+		
+		this.em.merge(pr);
 		
 	}
 
@@ -64,10 +66,28 @@ public class ProductListRepositoryImpl implements ProductListRepository{
 	}
 
 	@Override
-	public List<Product> list() {
-		// TODO Auto-generated method stub
+	public List<Product> listProducts() {
 		return null;
 	}
+	
+	public List<ProductsList> list(){
+		return this.em.find(ProductsList.class).asList();
+	}
 
+	@Override
+	public String getId(String email, int code) {
+		return this.em.find(ProductsList.class).field("email").equal(email)
+					  .field("code").equal(String.valueOf(code)).retrievedFields(true, "_id").get().getId().toStringMongod();
+	}
+
+	public ProductsList get(String id){
+		try{
+			return (ProductsList) this.em.get(ProductsList.class,id);
+		}catch(IllegalArgumentException iae){
+			return null;
+		}
+	
+
+	}
 	
 }

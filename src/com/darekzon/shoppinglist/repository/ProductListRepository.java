@@ -7,8 +7,11 @@ import com.darekzon.shoppinglist.model.ProductsList;
 
 public interface ProductListRepository {
 	void create(String email);
-	void addProduct(ProductsList pr,Product p);
+	void merge(ProductsList pr);
 	void delete(ProductsList pr);
 	void deleteProduct(ProductsList pr, Product p);
-	List<Product> list();
+	String getId(String email,int code);
+	List<Product> listProducts();
+	List<ProductsList> list();
+	ProductsList get(String id);
 }
