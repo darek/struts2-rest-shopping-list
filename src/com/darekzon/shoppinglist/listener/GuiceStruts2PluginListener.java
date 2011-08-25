@@ -19,10 +19,6 @@ package com.darekzon.shoppinglist.listener;
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 
 import com.darekzon.shoppinglist.modules.ShoppingListModule;
-import com.darekzon.shoppinglist.mongoose.EntityManager;
-import com.darekzon.shoppinglist.mongoose.EntityManagerImpl;
-import com.darekzon.shoppinglist.repository.ProductListRepository;
-import com.darekzon.shoppinglist.repository.ProductListRepositoryImpl;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
