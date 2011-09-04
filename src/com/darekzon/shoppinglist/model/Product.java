@@ -32,5 +32,17 @@ public class Product {
 	public void setAmount(int amnt){
 		this.amount = amnt;
 	}
+	
+	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 
 }
