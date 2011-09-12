@@ -16,6 +16,8 @@ It's based on:
   
   Struts 2 Convention - Plugin https://cwiki.apache.org/S2PLUGINS/convention-plugin.html
   
+  Struts 2 REST - Plugin https://cwiki.apache.org/S2PLUGINS/rest-plugin.html
+  
   Morphia library - http://code.google.com/p/morphia/
   
   MongoDB - http://www.mongodb.org/
