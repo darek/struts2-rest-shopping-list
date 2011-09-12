@@ -1,9 +1,15 @@
 package com.darekzon.shoppinglist.model;
+import java.io.Serializable;
+
 import com.google.code.morphia.annotations.Entity;
-import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 @Entity(value="products")
-public class Product {
+public class Product implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7752948041825268744L;
 	
 	public Product(){}
 	

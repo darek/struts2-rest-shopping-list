@@ -3,9 +3,9 @@ package com.darekzon.shoppinglist.mongoose;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Properties;
-
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.google.code.morphia.query.Query;
@@ -43,7 +43,7 @@ public class EntityManagerImpl implements EntityManager {
 	 * @throws MongoExcept
 	 */
 	public EntityManagerImpl() throws UnknownHostException, MongoException{
-		System.out.println("Starting Morphia wrapper...");
+		Logger.getLogger(this.getClass().toString()).log(Level.INFO,"Starting Morphia wrapper...");
 		this.readProperties();
 		this.mongo = new Mongo(properties.getProperty("db.host"),Integer.valueOf(properties.getProperty("db.port")));
 	}
@@ -72,12 +72,14 @@ public class EntityManagerImpl implements EntityManager {
 	}
 	
 	
-	@Override
 	public void merge(Object entity) {
-		System.out.println("merging entity "+entity);
 		this.getDatastore(this.properties.getProperty("db.datastore")).merge(entity);
 	}
 
+	public void delete(Object entity){
+		this.getDatastore(this.properties.getProperty("db.datastore")).delete(entity);
+	}
+	
 	public <T> T get(Class<T> cl,String id){
 	
 		return this.getDatastore(this.properties.getProperty("db.datastore")).get(cl,new ObjectId(id));
@@ -87,10 +89,8 @@ public class EntityManagerImpl implements EntityManager {
 		return this.mongo.getDB(database);
 	}
 
-	@Override
-	public void create(Object cl) {
-		this.getDatastore(this.properties.getProperty("db.datastore")).save(cl);
-		
+	public String create(Object cl) {
+		return this.getDatastore(this.properties.getProperty("db.datastore")).save(cl).getId().toString();
 	}
 
 }
