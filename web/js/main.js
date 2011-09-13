@@ -3,16 +3,16 @@
 function initAddProductForm(id){
 	var form = $("form#add-product-form");
 	var submit = form.find("#add-product-form_0");
-	var name = form.find("#add-product-form_product_name");
-	var amount = form.find("#add-product-form_product_amount");
+	var name = form.find("#product-name");
+	var amount = form.find("#product-amount");
 	
 	$("form#add-product-form").submit(function(){
 	   submit.addClass("disable");
 	   submit.attr("disabled","disabled");
 		$.ajax({
-			url: ContextPath+"/product/"+id,
+			url: ContextPath+"/product",
 	 		type: "post",
-	 		data: {"product.name":name.val(),"product.amount":amount.val()}
+	 		data: {"id":id,"product.name":name.val(),"product.amount":amount.val()}
 	 	})
 	 	.success(function(){
 	 		console.log("suc");
@@ -32,6 +32,25 @@ function initAddProductForm(id){
 		
 	});
 
+}
+
+function deleteList(id){
+	console.log("dupa");
+	$.ajax({
+		url: ContextPath+"/shopping-list/"+id,
+		data: {"id":id},
+		type: "delete"
+	})
+	.success(function(){
+		
+	})
+	.error(function(){
+		
+	})
+	.complete(function(){
+		
+	});
+	return false;
 }
 
 function bindDeleteProductsLinks(id){
@@ -56,8 +75,4 @@ function bindDeleteProductsLinks(id){
  	return false;
  	
  });	
-}
-
-function bindDeleteProductsListLink(id){
-	
 }
