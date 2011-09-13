@@ -1,6 +1,7 @@
 package com.darekzon.shoppinglist.actions;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.convention.annotation.ResultPath;
 
 import com.darekzon.shoppinglist.model.ShoppingList;
 import com.darekzon.shoppinglist.repository.ShoppingListRepository;
@@ -11,6 +12,7 @@ import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
+@ResultPath("/WEB-INF/content/shopping-list/")
 public class ShoppingListController implements ModelDriven<ShoppingList> {
 
 	ShoppingListRepository shoppingListRepository;
@@ -26,7 +28,7 @@ public class ShoppingListController implements ModelDriven<ShoppingList> {
 		
 
 	public String index(){
-
+		System.out.println("INDEX");
 		return "index";
 	}
 	
@@ -37,7 +39,8 @@ public class ShoppingListController implements ModelDriven<ShoppingList> {
 	}
 
 	public String show(){
-
+		System.out.println("shopping list show"+this.list.getName());
+		
 		return "show";
 	}
 	
@@ -57,6 +60,7 @@ public class ShoppingListController implements ModelDriven<ShoppingList> {
 	}
 	
 	public ShoppingList getModel() {
+		this.list = this.shoppingListRepository.get(this.getId());
 		return this.list;
 	}
 
@@ -65,7 +69,6 @@ public class ShoppingListController implements ModelDriven<ShoppingList> {
 		return id;
 	}
 
-	@TypeConversion(converter = "com.darekzon.shoppinglist.converter.ObjectIdConverter")
 	public void setId(String id) {
 		this.id = id;
 	}
