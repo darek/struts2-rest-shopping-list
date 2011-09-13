@@ -43,10 +43,10 @@ public class ProductController implements ModelDriven<ShoppingList> {
 		return "create";
 	}
 
-	public HttpHeaders destroy() {
+	public String destroy() {
 		Logger.getLogger(this.getClass().toString()).log(Level.INFO,"deleting product");
 		this.productListRepository.deleteProduct(this.productsList,this.productId);
-		return new DefaultHttpHeaders("show").withNoETag().withStatus(303);
+		return "destroy";
 	}
 
 	public ShoppingList getModel() {
