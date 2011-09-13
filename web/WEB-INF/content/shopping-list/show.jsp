@@ -13,26 +13,25 @@
 	</head> 
 	<body> 
 
-	<h2>Products lsit</h2>
-	<s:form action="/products-list.xhtml" method="post" id="add-product-form">
-		<s:textfield name="product.name" />
-		<s:textfield name="product.amount" />
-		<s:submit />
-	</s:form>
+	<h2>Products list
+		<a href="#" onclick="deleteList('${list.id}')">delete list</a>	
+	</h2>
+	<form action="" method="post" id="add-product-form">
+		<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
+		<input type="text" name="product.amount" id="product-amount" placeholder="Product amount" min="1" required="required" />
+		<input type="submit" value="go" />
+	</form>
 	
-	<s:if test="%{productsList !=null}">
-		<ol id="products-list">
-		<s:iterator value="productsList">
+	<ol id="products-list">
+		<s:iterator value="list.productsList">
 			<li><s:property value="name" /> (<s:property value="amount" />) <a href="#" id="<s:property value="id" />">X</a></li>
 		</s:iterator>
-		</ol>
-	</s:if>
+	</ol>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			initAddProductForm('<s:property value="id" />');
 			bindDeleteProductsLinks('<s:property value="id" />');
-			bindDeleteProductsListLink('<s:property value="id" />');
 		});
 	</script>
 </body> 
