@@ -1,1 +1,16 @@
 @CHARSET "UTF-8";
+
+html{background: url("../image/background.png") 0% 0%;}
+	body{width:500px; margin:0 auto;font-family: "trebuchet MS"}
+		body h1{font-size:32px;}
+
+		body aside.panel{width:220px;border:1px solid #dfdfdf;border-radius:4px;background:rgba(255,255,255,0.5);padding:10px;}
+		body aside.panel.left{float:left}
+		body aside.panel.right{float:right;}
+
+.delete-list{}
+
+
+.welcome-text{text-align:center;padding:10px;border:1px solid #dfdfdf;background-color:rgba(255,255,255,0.6);margin-top:150px;border-radius:5px;}
+	.welcome-text a{color:#FE642C;text-decoration: none;}
+	.welcome-text a:hover{color:#E85127;text-decoration: none;}

@@ -14,9 +14,10 @@
 		<script src="${pageContext.request.contextPath}/js/main.js"></script> 
 	</head> 
 	<body> 
-
+	<h1>Shopping list</h1>
+	
 	<h2>Products list
-		<a href="#" onclick="deleteList('${list.id}')">delete list</a>	
+		<a href="#" class="delete-list button ui-icon ui-icon-closethick" onclick="deleteList('${list.id}')">delete list</a>	
 	</h2>
 	<form action="" method="post" id="add-product-form">
 		<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
@@ -29,6 +30,12 @@
 			<li><s:property value="name" /> (<s:property value="amount" />) <a href="#" id="<s:property value="id" />">X</a></li>
 		</s:iterator>
 	</ol>
+
+	<div id="window" title="Info" style="display:none">
+		<div class="content">
+		
+		</div>
+	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
