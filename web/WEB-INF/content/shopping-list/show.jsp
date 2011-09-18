@@ -4,11 +4,13 @@
 	<head> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
 		<title>Shopping list - ${list.name}</title> 
-		<link rel="stylesheet" href="/css/system.css" type="text/css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/flick/jquery-ui.css" type="text/css" />
 		<script type="text/javascript">
 			ContextPath = "${pageContext.request.contextPath}";
 		</script>
 		<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/main.js"></script> 
 	</head> 
 	<body> 
