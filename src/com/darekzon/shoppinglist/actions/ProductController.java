@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
+@ResultPath("/WEB-INF/content/product/")
 public class ProductController implements ModelDriven<ShoppingList> {
 
 	ShoppingListRepository productListRepository;
