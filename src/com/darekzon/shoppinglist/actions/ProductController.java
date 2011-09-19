@@ -2,6 +2,7 @@ package com.darekzon.shoppinglist.actions;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.struts2.convention.annotation.ResultPath;
 import org.apache.struts2.rest.DefaultHttpHeaders;
 import org.apache.struts2.rest.HttpHeaders;
 
@@ -36,18 +37,19 @@ public class ProductController implements ModelDriven<ShoppingList> {
 	@Validations(requiredFields = {
 			@RequiredFieldValidator(type = ValidatorType.FIELD, fieldName = "product.name", message = "You must enter product name"),
 			@RequiredFieldValidator(type = ValidatorType.FIELD, fieldName = "product.amount", message = "You must enter amount") }, intRangeFields = { @IntRangeFieldValidator(type = ValidatorType.FIELD, fieldName = "product.amount", min = "1", message = "You must set amount greater than 0") })
-	public String create() {
+	public HttpHeaders create() {
 		Logger.getLogger(this.getClass()).debug("inserting new product - "+this.product.getName());
-		
 		this.productsList.addProduct(this.product);
 		this.productListRepository.merge(this.productsList);
-		return "create";
+		
+		return new DefaultHttpHeaders("create").withStatus(204);
 	}
 
-	public String destroy() {
+	public HttpHeaders destroy() {
 		Logger.getLogger(this.getClass().toString()).log(Level.INFO,"deleting product");
 		this.productListRepository.deleteProduct(this.productsList,this.productId);
-		return "destroy";
+		
+		return new DefaultHttpHeaders("destroy").withStatus(204);
 	}
 
 	public ShoppingList getModel() {
