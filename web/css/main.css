@@ -7,10 +7,23 @@ html{background: url("../image/background.png") 0% 0%;}
 		body aside.panel{width:220px;border:1px solid #dfdfdf;border-radius:4px;background:rgba(255,255,255,0.5);padding:10px;}
 		body aside.panel.left{float:left}
 		body aside.panel.right{float:right;}
+			
+		body footer{ background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6); border: 1px solid #DFDFDF;border-radius: 5px 5px 5px 5px;bottom: 10px;font-size: 13px;line-height: 11px;padding: 10px;position: absolute;text-align: center;width: 480px;}
+			body footer p{margin:2px;}
+		
+a{color:#FE642C;text-decoration: none;}
+	a:hover{color:#E85127;text-decoration: none;}
 
-.delete-list{}
+h2{float:left;margin-top:0px;}
+	h2 span{color:#e85127;}
+.delete-list{float:left;margin-left:2px;}
+
+aside#shopping-list{background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);border: 1px solid #DFDFDF;border-radius: 5px 5px 5px 5px;clear: both;padding: 20px;}
+
+ol#products-list a{visibility: hidden;float:right;}
+ol#products-list li{margin-bottom:5px;}
+	ol#products-list li:hover{border-bottom:1px solid #dfdfdf;margin-bottom:4px;}
+		ol#products-list li:hover a{visibility: visible;}
 
 
 .welcome-text{text-align:center;padding:10px;border:1px solid #dfdfdf;background-color:rgba(255,255,255,0.6);margin-top:150px;border-radius:5px;}
-	.welcome-text a{color:#FE642C;text-decoration: none;}
-	.welcome-text a:hover{color:#E85127;text-decoration: none;}

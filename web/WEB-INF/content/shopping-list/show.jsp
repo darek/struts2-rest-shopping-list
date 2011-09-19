@@ -16,20 +16,23 @@
 	<body> 
 	<h1>Shopping list</h1>
 	
-	<h2>Products list
-		<a href="#" class="delete-list button ui-icon ui-icon-closethick" onclick="deleteList('${list.id}')">delete list</a>	
+	<h2>Products list  - 
+		<span>${list.name}</span>
 	</h2>
-	<form action="" method="post" id="add-product-form">
-		<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
-		<input type="text" name="product.amount" id="product-amount" placeholder="Product amount" min="1" required="required" />
-		<input type="submit" value="go" />
-	</form>
-	
-	<ol id="products-list">
-		<s:iterator value="list.productsList">
-			<li><s:property value="name" /> (<s:property value="amount" />) <a href="#" id="<s:property value="id" />">X</a></li>
-		</s:iterator>
-	</ol>
+	<a href="#" class="delete-list button ui-icon ui-icon-closethick" onclick="deleteList('${list.id}')">delete list</a>
+	<aside id="shopping-list">
+		<form action="" method="post" id="add-product-form">
+			<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
+			<input type="text" name="product.amount" id="product-amount" placeholder="Product amount" min="1" required="required" />
+			<input type="submit" value="go" />
+		</form>
+		
+		<ol id="products-list">
+			<s:iterator value="list.productsList">
+				<li><s:property value="name" /> (<s:property value="amount" />) <a href="#" class="ui-icon ui-icon-trash" id="<s:property value="id" />">X</a></li>
+			</s:iterator>
+		</ol>
+	</aside>
 
 	<div id="window" title="Info" style="display:none">
 		<div class="content">
@@ -43,5 +46,11 @@
 			bindDeleteProductsLinks('<s:property value="id" />');
 		});
 	</script>
+	
+	<footer>
+			<p>&copy; by <a href="http://darekzon.com">darek zon</a></p>
+			<p><a href="http://www.colourlovers.com/pattern/50713/pat">pattern</a> by <a href="http://www.colourlovers.com/lover/florc">florc</a> from <a href="http://www.colourlovers.com/lover/florc">colurlovers</a></p> 
+	</footer>
+	
 </body> 
 </html> 

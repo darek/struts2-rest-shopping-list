@@ -11,7 +11,12 @@
 	</head> 
 	<body>
 		<aside class="welcome-text"> 
-		Go to <a href="${pageContext.request.contextPath}/shopping-list/index.xhtml">"Shopping list"</a> panel
+		Go to <a href="${pageContext.request.contextPath}/shopping-list.xhtml">"Shopping list"</a> panel
 		</aside>
+		
+		<footer>
+			<p>&copy; by <a href="http://darekzon.com">darek zon</a></p>
+			<p><a href="http://www.colourlovers.com/pattern/50713/pat">pattern</a> by <a href="http://www.colourlovers.com/lover/florc">florc</a> from <a href="http://www.colourlovers.com/lover/florc">colurlovers</a></p> 
+		</footer>
 	</body> 
 </html> 
