@@ -1,6 +1,5 @@
 package com.darekzon.shoppinglist.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,12 +7,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.bson.types.ObjectId;
 
+import com.google.code.morphia.annotations.Converters;
 import com.google.code.morphia.annotations.Id;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
-public class ShoppingList implements Serializable{
-
-	private static final long serialVersionUID = -4374978109394603338L;
+public class ShoppingList{
 	
 	public ShoppingList(){}
 	
@@ -23,16 +21,12 @@ public class ShoppingList implements Serializable{
 	public ObjectId getId() {
 		return id;
 	}
-
-	@TypeConversion(converter = "com.darekzon.shoppinglist.converter.ObjectIdConverter")
+	
+	@TypeConversion("com.darekzon.shoppinglist.converter.ObjectIdConverter")
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
 	
-	public void setId(String id){
-		this.id = new ObjectId(id);
-	}
-
 	private String name;
 
 	public String getName() {
