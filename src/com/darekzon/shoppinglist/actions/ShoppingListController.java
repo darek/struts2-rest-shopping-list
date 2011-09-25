@@ -34,6 +34,10 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 		if(this.id != null && this.list==null){
 			return new DefaultHttpHeaders("notfound").withStatus(404);
 		}
+		if(this.id !=null && this.list!=null){
+			// BUG - even with directly setted 302 status application is returning 201 (created) status.
+			return new DefaultHttpHeaders("show").setLocationId(this.id).withStatus(302);
+		}
 		return new DefaultHttpHeaders("index");
 	}
 	
@@ -47,7 +51,7 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 		if(this.list == null){
 			return new DefaultHttpHeaders("notfound").withStatus(404);
 		}
-		return new DefaultHttpHeaders("show");
+		return new DefaultHttpHeaders("show").withStatus(200);
 
 	}
 	
