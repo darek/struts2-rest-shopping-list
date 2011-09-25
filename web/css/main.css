@@ -19,9 +19,12 @@ h2{float:left;margin-top:0px;}
 .delete-list{float:left;margin-left:2px;}
 
 aside#shopping-list{padding:20px;}
+	aside#shopping-list a.file{float:right;}
+		aside#shopping-list a.file span{float:left;margin-top:4px;}
+
 aside.box{background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);border: 1px solid #DFDFDF;border-radius: 5px 5px 5px 5px;clear: both;padding: 10px;margin-bottom:20px;}
-aside .bold{font-weight: bold;}
-aside .small{font-size:11px;}
+	aside .bold{font-weight: bold;}
+	aside .small{font-size:11px;}
 
 aside.error{background: none repeat scroll 0 0 rgba(210, 16, 53, 0.6);border: 1px solid #CF0213;color: #FFFFFF;margin-bottom: 20px;padding: 10px;}
 	aside.error a{color:#DBD774;}
