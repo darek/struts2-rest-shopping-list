@@ -25,7 +25,7 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 		this.shoppingListRepository = pr;
 	}
 	
-	private ShoppingList list = new ShoppingList();
+	private ShoppingList list = null;
 	
 	private String id;	
 		
@@ -41,9 +41,11 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 		return new DefaultHttpHeaders("create").withStatus(201).setLocationId(id.toString());
 	}
 
-	public String show(){
-		
-		return "show";
+	public HttpHeaders show(){
+		if(this.list == null){
+			return new DefaultHttpHeaders("notfound").withStatus(404);
+		}
+		return new DefaultHttpHeaders("show");
 
 	}
 	
