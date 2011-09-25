@@ -27,12 +27,14 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 	
 	private ShoppingList list = null;
 	
-	private String id;	
+	private String id = null;	
 		
 
-	public String index(){
-		
-		return "index";
+	public HttpHeaders index(){
+		if(this.id != null && this.list==null){
+			return new DefaultHttpHeaders("notfound").withStatus(404);
+		}
+		return new DefaultHttpHeaders("index");
 	}
 	
 	@Validations(requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "list.name", message = "You must set shopping list name a value for string.")})
