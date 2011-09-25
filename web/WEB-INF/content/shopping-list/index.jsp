@@ -23,7 +23,7 @@
 	
 	<aside class="panel left box">
 		<h2>Open shopping list</h2>
-		<form id="open-shopping-list">
+		<form id="open-shopping-list" method="get">
 			<input id="code" name="id" placeholder="Shopping List ID" required="required" />
 			<input type="submit" value="go" name="" />
 		</form>
