@@ -20,7 +20,17 @@
 		<span>${list.name}</span>
 	</h2>
 	<a href="#" class="delete-list button ui-icon ui-icon-closethick" onclick="deleteList('${list.id}')">delete list</a>
-	<aside id="shopping-list">
+	
+	<aside id="list-info" class="box">
+		<p>ID: <span class="bold small">${list.id}</span></p>
+		<p>URL:
+			<s:a action="shopping-list/%{list.id}.xhtml" forceAddSchemeHostAndPort="true" includeContext="true" >
+				<span class="bold small"><s:url action="shopping-list/%{list.id}" forceAddSchemeHostAndPort="true" /></span>
+			</s:a>
+		</p>
+	</aside>
+	
+	<aside id="shopping-list"  class="box">
 		<form action="" method="post" id="add-product-form">
 			<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
 			<input type="text" name="product.amount" id="product-amount" placeholder="Product amount" min="1" required="required" />

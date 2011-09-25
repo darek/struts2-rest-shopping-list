@@ -10,7 +10,7 @@
 		</script>
 	</head> 
 	<body>
-		<aside class="welcome-text"> 
+		<aside class="welcome-text box"> 
 		Go to <a href="${pageContext.request.contextPath}/shopping-list.xhtml">"Shopping list"</a> panel
 		</aside>
 		

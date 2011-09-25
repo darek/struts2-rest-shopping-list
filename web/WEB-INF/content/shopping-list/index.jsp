@@ -21,7 +21,7 @@
 	<body> 
 	<h1>Shopping list</h1>
 	
-	<aside class="panel left">
+	<aside class="panel left box">
 		<h2>Open shopping list</h2>
 		<form id="open-shopping-list">
 			<input id="code" name="id" placeholder="Shopping List ID" required="required" />
@@ -29,7 +29,7 @@
 		</form>
 	</aside>
 	
-	<aside class="panel right">
+	<aside class="panel right box">
 		<h2>Add shopping list</h2>
 		<form id="add-shopping-list" method="post" action="${pageContext.request.contextPath}/shopping-list.xhtml">
 			<input type="text" placeholder="Shopping list name" id="name" name="list.name" required="required" />
