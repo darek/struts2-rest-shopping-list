@@ -32,8 +32,8 @@
 	
 	<aside id="shopping-list"  class="box">
 		
-		<s:a value="shopping-list/%{list.id}.json" forceAddSchemeHostAndPort="true" includeContext="true" cssClass="file"><span class="ui-icon ui-icon-document-b"></span>json</s:a>
-		<s:a value="shopping-list/%{list.id}.xml" forceAddSchemeHostAndPort="true" includeContext="true" cssClass="file"><span class="ui-icon ui-icon-document-b"></span>xml</s:a>
+		<s:a value="/shopping-list/%{list.id}.json" forceAddSchemeHostAndPort="true" includeContext="true" cssClass="file"><span class="ui-icon ui-icon-document-b"></span>json</s:a>
+		<s:a value="/shopping-list/%{list.id}.xml" forceAddSchemeHostAndPort="true" includeContext="true" cssClass="file"><span class="ui-icon ui-icon-document-b"></span>xml</s:a>
 		
 		<form action="" method="post" id="add-product-form">
 			<input type="text" name="product.name" id="product-name" placeholder="Product name" required="required" />
@@ -42,8 +42,8 @@
 		</form>
 		
 		<ol id="products-list">
-			<s:iterator value="list.productsList">
-				<li><s:property value="name" /> (<s:property value="amount" />) <a href="#" class="ui-icon ui-icon-trash" id="<s:property value="id" />">X</a></li>
+			<s:iterator value="list.productsList" var="l" >
+				<li>${l.name} (${l.amount}) <a href="#" class="ui-icon ui-icon-trash" id="${l.id}">X</a></li>
 			</s:iterator>
 		</ol>
 	</aside>

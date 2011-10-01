@@ -45,7 +45,7 @@ function initAddProductForm(id){
 			}
 	 	})
 	 	.success(function(){
-	 		redirect("/shopping-list/"+id+".xhtml");
+	 		refresh();
 	 	})
 	 	.error(function(){
 	 		$("#window").dialog({
@@ -60,12 +60,7 @@ function initAddProductForm(id){
 	 		});
 	 	})
 	 	.complete(function(){
-	 		name.val("");
-	 		amount.val(0);
-	 		submit.removeAttr("disabled");
-			submit.removeClass("disable");
-			submit.removeAttr("disabled");
-		 	submit.removeClass("disable");
+	 		refresh();
 	 	});
 	 	return false;
 		
@@ -80,13 +75,13 @@ function deleteList(id){
 		type: "delete"
 	})
 	.success(function(){
-		
+		refresh();
 	})
 	.error(function(){
-		
+		refresh();
 	})
 	.complete(function(){
-		
+		refresh();
 	});
 	return false;
 }
@@ -99,13 +94,13 @@ function bindDeleteProductsLinks(id){
  		type: "delete"
  	})
  	.success(function(){
- 		console.log("suc");
+ 		refresh();
  	})
  	.error(function(){
- 		console.log("error");
+ 		refresh();
  	})
  	.complete(function(){
- 		console.log("compl");
+ 		refresh();
  	});
  		
  		
@@ -113,6 +108,10 @@ function bindDeleteProductsLinks(id){
  	return false;
  	
  });	
+}
+
+function refresh(){
+	location.reload(true);
 }
 
 function redirect(url,full){
