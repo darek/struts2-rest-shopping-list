@@ -52,7 +52,6 @@ public class ShoppingListController implements ModelDriven<ShoppingList>  {
 			return new DefaultHttpHeaders("notfound").withStatus(404);
 		}
 		return new DefaultHttpHeaders("show").withStatus(200);
-
 	}
 	
 	
